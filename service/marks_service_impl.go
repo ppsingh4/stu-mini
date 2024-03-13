@@ -16,12 +16,10 @@ func NewMarksService(marksDAO dao.MarksDAO) MarksService {
 func (s *MarksServiceImpl) CreateMarks(studentID string, marksDTO *transport.Marks) error {
     // Convert DTO to entity
     marks := entity.Marks{
-        ID: marksDTO.ID,
-        Maths:  marksDTO.Maths,
-        Social:  marksDTO.Social,
-        Science:  marksDTO.Science,
-		English: marksDTO.English,
-		Hindi: marksDTO.Hindi,
+        Stu_ID: marksDTO.Stu_ID,
+        Sub_1:  marksDTO.Sub_1,
+        Sub_2:  marksDTO.Sub_2,
+        Sub_3:  marksDTO.Sub_3,
     }
     // Call DAO to create marks
     err := s.marksDAO.Create(&marks)
@@ -43,12 +41,10 @@ func (s *MarksServiceImpl) GetMarks(studentID string) (*entity.Marks, error) {
 func (s *MarksServiceImpl) UpdateMarks(studentID string, marksDTO *transport.Marks) error {
     // Convert DTO to entity
     updatedMarks := entity.Marks{
-        ID: marksDTO.ID,
-        Maths:  marksDTO.Maths,
-        Social:  marksDTO.Social,
-        Science:  marksDTO.Science,
-		English: marksDTO.English,
-		Hindi: marksDTO.Hindi,
+        Stu_ID: marksDTO.Stu_ID,
+        Sub_1:  marksDTO.Sub_1,
+        Sub_2:  marksDTO.Sub_2,
+        Sub_3:  marksDTO.Sub_3,
     }
     // Call DAO to update marks
     err := s.marksDAO.UpdateByStudentID(studentID, &updatedMarks)

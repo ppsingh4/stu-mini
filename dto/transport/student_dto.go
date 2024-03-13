@@ -1,7 +1,7 @@
 package transport
 
 type Student struct {
-	ID        string   `gorm:"primary_key"`
+	ID        uint   `gorm:"primary_key"`
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
 	Grade     string    `json:"grade"`

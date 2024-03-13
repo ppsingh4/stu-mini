@@ -4,6 +4,14 @@ import (
     "smod/entity"
     "smod/dto/transport"
 )
+
+// type StudentService interface {
+// 	CreateStudent(studentDTO *transport.Student) (string, error)
+// 	GetStudent(studentID string) (*entity.Student, error)
+// 	UpdateStudent(studentID string, studentDTO *transport.Student) error
+// 	DeleteStudent(studentID string) error
+// }
+
 // StudentServiceImpl is the implementation of StudentService.
 type StudentServiceImpl struct {
     studentDAO dao.StudentDAO
@@ -13,7 +21,7 @@ func NewStudentService(studentDAO dao.StudentDAO) StudentService {
     return &StudentServiceImpl{studentDAO: studentDAO}
 }
 // CreateStudent creates a new student.
-func (s *StudentServiceImpl) CreateStudent(studentDTO *transport.Student) (string, error) {
+func (s *StudentServiceImpl) CreateStudent(studentDTO *transport.Student) (uint, error) {
     // Validation and business logic can be performed here
     // Convert DTO to entity
     student := entity.Student{
@@ -27,7 +35,7 @@ func (s *StudentServiceImpl) CreateStudent(studentDTO *transport.Student) (strin
     // Call DAO to create student
     studentID, err := s.studentDAO.Create(&student)
     if err != nil {
-        return "", err
+        return 0, err
     }
     return studentID, nil
 }
