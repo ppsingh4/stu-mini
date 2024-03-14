@@ -1,14 +1,13 @@
 package main
 
 import (
-	"log"
 	"net/http"
-	"smod/api"
-	"smod/dao"
-	"smod/db"
-	"smod/service"
+	"github.com/ppsingh4/stu-mini/api"
+	"github.com/ppsingh4/stu-mini/dao"
+	"github.com/ppsingh4/stu-mini/db"
+	"github.com/ppsingh4/stu-mini/service"
 	"time"
-
+	log "github.com/sirupsen/logrus"
 	"gorm.io/gorm"
 )
 

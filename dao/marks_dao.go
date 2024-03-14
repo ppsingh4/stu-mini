@@ -2,8 +2,8 @@ package dao
 
 import (
 	"errors"
-	"smod/db"
-	"smod/entity"
+	"github.com/ppsingh4/stu-mini/db"
+	"github.com/ppsingh4/stu-mini/entity"
 
 	"gorm.io/gorm"
 )

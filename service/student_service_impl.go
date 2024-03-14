@@ -1,8 +1,8 @@
 package service
 import (
-    "smod/dao"
-    "smod/entity"
-    "smod/dto/transport"
+    "github.com/ppsingh4/stu-mini/dao"
+    "github.com/ppsingh4/stu-mini/entity"
+    "github.com/ppsingh4/stu-mini/dto/transport"
 )
 
 // type StudentService interface {
@@ -11,6 +11,12 @@ import (
 // 	UpdateStudent(studentID string, studentDTO *transport.Student) error
 // 	DeleteStudent(studentID string) error
 // }
+type StudentService interface {
+	CreateStudent(studentDTO transport.Student) (uint, error)
+	GetStudent(studentID string) (*entity.Student, error)
+	UpdateStudent(studentID string, studentDTO transport.Student) error
+	DeleteStudent(studentID string) error
+}
 
 // StudentServiceImpl is the implementation of StudentService.
 type StudentServiceImpl struct {
@@ -21,7 +27,7 @@ func NewStudentService(studentDAO dao.StudentDAO) StudentService {
     return &StudentServiceImpl{studentDAO: studentDAO}
 }
 // CreateStudent creates a new student.
-func (s *StudentServiceImpl) CreateStudent(studentDTO *transport.Student) (uint, error) {
+func (s *StudentServiceImpl) CreateStudent(studentDTO transport.Student) (uint, error) {
     // Validation and business logic can be performed here
     // Convert DTO to entity
     student := entity.Student{
@@ -49,7 +55,7 @@ func (s *StudentServiceImpl) GetStudent(studentID string) (*entity.Student, erro
     return student, nil
 }
 // UpdateStudent updates an existing student.
-func (s *StudentServiceImpl) UpdateStudent(studentID string, studentDTO *transport.Student) error {
+func (s *StudentServiceImpl) UpdateStudent(studentID string, studentDTO transport.Student) error {
     // Validation and business logic can be performed here
     // Convert DTO to entity
     updatedStudent := entity.Student{

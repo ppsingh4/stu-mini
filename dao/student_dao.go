@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"smod/db"
-	"smod/entity"
+	"github.com/ppsingh4/stu-mini/db"
+	"github.com/ppsingh4/stu-mini/entity"
 )
 
 type StudentDAO interface {
