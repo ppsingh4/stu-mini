@@ -5,8 +5,8 @@ import (
 )
 // MarksService defines the interface for marks-related operations.
 type MarksService interface {
-    CreateMarks(studentID string, marksDTO *transport.Marks) error
-    GetMarks(studentID string) (*entity.Marks, error)
-    UpdateMarks(studentID string, marksDTO *transport.Marks) error
+    CreateMarks( marksDTO *transport.Mark) error
+    GetMarks(studentID string) (*entity.Mark, error)
+    UpdateMarks(studentID string, marksDTO *transport.Mark) error
     DeleteMarks(studentID string) error
 }

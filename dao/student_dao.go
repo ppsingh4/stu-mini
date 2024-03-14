@@ -24,7 +24,6 @@ func NewStudentDAO(database *db.Database) StudentDAO {
 
 // Create creates a new student record in the database.
 func (d *StudentDAOImpl) Create(student *entity.Student) (uint, error) {
-	//student.ID = uuid.New().String() // Generate a new UUID for student ID
 	err := d.db.Create(student).Error
 	if err != nil {
 		return 0, err

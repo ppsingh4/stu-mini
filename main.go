@@ -1,18 +1,22 @@
 package main
 
 import (
-    "log"
-    "net/http"
-    "smod/api"
-    "smod/db"
-	"smod/service"
+	"log"
+	"net/http"
+	"smod/api"
 	"smod/dao"
+	"smod/db"
+	"smod/service"
+	"time"
+
 	"gorm.io/gorm"
 )
 
 func main() {
     // Initialize the database
-    ndatabase, err := db.Initialize("postgres://postgres:@localhost:5432/freshdb?sslmode=disable")
+	time.Sleep(10*time.Second)
+	dsn := "host=postgres user=hp password=Harshith dbname=prithvi port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+    ndatabase, err := db.Initialize(dsn)
     if err != nil {
         log.Fatal("Failed to initialize database:", err)
     }

@@ -134,17 +134,17 @@ func NewMarksHandler(marksService service.MarksService) MarksHandler {
 func (h *MarksHandler) CreateMarksHandler(w http.ResponseWriter, r *http.Request) {
 	// Implement logic to create marks using HTTP
 	// Example:
-	params := mux.Vars(r)
-	studentID := params["stu_id"]
+	// params := mux.Vars(r)
+	// studentID := params["stu_id"]
 	fmt.Println("creating marks")
 	decoder := json.NewDecoder(r.Body)
-	var m transport.Marks
+	var m transport.Mark
 	err := decoder.Decode(&m)
 	if err != nil {
 		http.Error(w, "invalid input", http.StatusBadRequest)
 		return
 	}
-	result := h.marksService.CreateMarks(studentID, &m)
+	result := h.marksService.CreateMarks( &m)
 	if result != nil {
 		http.Error(w, "result.Error.Error()", http.StatusInternalServerError)
 		return
@@ -158,7 +158,7 @@ func (h *MarksHandler) GetMarksByIDHandler(w http.ResponseWriter, r *http.Reques
 	// Implement logic to retrieve marks by ID using HTTP
 	// Example:
 	params := mux.Vars(r)
-	studentID := params["stu_id"]
+	studentID := params["id"]
 	// var m transport.MarksDTO
 	result,err := h.marksService.GetMarks(studentID)
 	if err != nil {
@@ -189,7 +189,7 @@ func (h *MarksHandler) UpdateMarksHandler(w http.ResponseWriter, r *http.Request
 	// }
 	// Decode the request body to get updated marks details
 	decoder := json.NewDecoder(r.Body)
-	var updatedMarks transport.Marks
+	var updatedMarks transport.Mark
 	err := decoder.Decode(&updatedMarks)
 	if err != nil {
 		http.Error(w, "invalid input", http.StatusBadRequest)

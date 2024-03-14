@@ -1,7 +1,7 @@
 package transport
 
-type Marks struct {
-	Stu_ID uint `gorm:"primary_key" json:"student_id"`
+type Mark struct {
+	ID string `gorm:"primary_key" json:"id"`
 	Sub_1 uint `json:"sub_1"`
 	Sub_2 uint `json:"sub_2"`
 	Sub_3 uint `json:"sub_3"`

@@ -15,8 +15,8 @@ func SetupRouter(studentHandler StudentHandler, marksHandler MarksHandler) http.
     router.HandleFunc("/students/{id}", studentHandler.DeleteStudentHandler).Methods("DELETE")
 
     // Marks endpoints
-    router.HandleFunc("/marks/{stu_id}", marksHandler.CreateMarksHandler).Methods("POST")
-    router.HandleFunc("/marks/{stu_id}", marksHandler.GetMarksByIDHandler).Methods("GET")
+    router.HandleFunc("/marks", marksHandler.CreateMarksHandler).Methods("POST")
+    router.HandleFunc("/marks/{id}", marksHandler.GetMarksByIDHandler).Methods("GET")
     router.HandleFunc("/marks/{id}", marksHandler.UpdateMarksHandler).Methods("PUT")
     router.HandleFunc("/marks/{id}", marksHandler.DeleteMarksHandler).Methods("DELETE")
 

@@ -13,10 +13,10 @@ func NewMarksService(marksDAO dao.MarksDAO) MarksService {
     return &MarksServiceImpl{marksDAO: marksDAO}
 }
 // CreateMarks creates marks for a student.
-func (s *MarksServiceImpl) CreateMarks(studentID string, marksDTO *transport.Marks) error {
+func (s *MarksServiceImpl) CreateMarks( marksDTO *transport.Mark) error {
     // Convert DTO to entity
-    marks := entity.Marks{
-        Stu_ID: marksDTO.Stu_ID,
+    marks := entity.Mark{
+        ID:     marksDTO.ID,
         Sub_1:  marksDTO.Sub_1,
         Sub_2:  marksDTO.Sub_2,
         Sub_3:  marksDTO.Sub_3,
@@ -29,7 +29,7 @@ func (s *MarksServiceImpl) CreateMarks(studentID string, marksDTO *transport.Mar
     return nil
 }
 // GetMarks retrieves marks for a student.
-func (s *MarksServiceImpl) GetMarks(studentID string) (*entity.Marks, error) {
+func (s *MarksServiceImpl) GetMarks(studentID string) (*entity.Mark, error) {
     // Call DAO to get marks for a student
     marks, err := s.marksDAO.GetByStudentID(studentID)
     if err != nil {
@@ -38,10 +38,10 @@ func (s *MarksServiceImpl) GetMarks(studentID string) (*entity.Marks, error) {
     return marks, nil
 }
 // UpdateMarks updates marks for a student.
-func (s *MarksServiceImpl) UpdateMarks(studentID string, marksDTO *transport.Marks) error {
+func (s *MarksServiceImpl) UpdateMarks(studentID string, marksDTO *transport.Mark) error {
     // Convert DTO to entity
-    updatedMarks := entity.Marks{
-        Stu_ID: marksDTO.Stu_ID,
+    updatedMarks := entity.Mark{
+        ID: marksDTO.ID,
         Sub_1:  marksDTO.Sub_1,
         Sub_2:  marksDTO.Sub_2,
         Sub_3:  marksDTO.Sub_3,
