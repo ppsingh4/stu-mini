@@ -6,9 +6,9 @@ import (
 )
 // MarksService defines the interface for marks-related operations.
 type MarksService interface {
-    CreateMarks( marksDTO *transport.Mark) error
+    CreateMarks( marksDTO transport.Mark) error
     GetMarks(studentID string) (*entity.Mark, error)
-    UpdateMarks(studentID string, marksDTO *transport.Mark) error
+    UpdateMarks(studentID string, marksDTO transport.Mark) error
     DeleteMarks(studentID string) error
 }
 // MarksServiceImpl is the implementation of MarksService.
@@ -20,7 +20,7 @@ func NewMarksService(marksDAO dao.MarksDAO) MarksService {
     return &MarksServiceImpl{marksDAO: marksDAO}
 }
 // CreateMarks creates marks for a student.
-func (s *MarksServiceImpl) CreateMarks( marksDTO *transport.Mark) error {
+func (s *MarksServiceImpl) CreateMarks( marksDTO transport.Mark) error {
     // Convert DTO to entity
     marks := entity.Mark{
         ID:     marksDTO.ID,
@@ -45,7 +45,7 @@ func (s *MarksServiceImpl) GetMarks(studentID string) (*entity.Mark, error) {
     return marks, nil
 }
 // UpdateMarks updates marks for a student.
-func (s *MarksServiceImpl) UpdateMarks(studentID string, marksDTO *transport.Mark) error {
+func (s *MarksServiceImpl) UpdateMarks(studentID string, marksDTO transport.Mark) error {
     // Convert DTO to entity
     updatedMarks := entity.Mark{
         ID: marksDTO.ID,

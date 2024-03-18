@@ -12,7 +12,7 @@ import (
 // 	DeleteStudent(studentID string) error
 // }
 type StudentService interface {
-	CreateStudent(studentDTO transport.Student) (uint, error)
+	CreateStudent(studentDTO transport.Student) (int32, error)
 	GetStudent(studentID string) (*entity.Student, error)
 	UpdateStudent(studentID string, studentDTO transport.Student) error
 	DeleteStudent(studentID string) error
@@ -27,7 +27,7 @@ func NewStudentService(studentDAO dao.StudentDAO) StudentService {
     return &StudentServiceImpl{studentDAO: studentDAO}
 }
 // CreateStudent creates a new student.
-func (s *StudentServiceImpl) CreateStudent(studentDTO transport.Student) (uint, error) {
+func (s *StudentServiceImpl) CreateStudent(studentDTO transport.Student) (int32, error) {
     // Validation and business logic can be performed here
     // Convert DTO to entity
     student := entity.Student{

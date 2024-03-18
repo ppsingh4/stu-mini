@@ -35,7 +35,7 @@ func (h *MarksHandler) CreateMarksHandler(w http.ResponseWriter, r *http.Request
 		http.Error(w, "invalid input", http.StatusBadRequest)
 		return
 	}
-	result := h.marksService.CreateMarks(&m)
+	result := h.marksService.CreateMarks(m)
 	if result != nil {
 		http.Error(w, "result.Error.Error()", http.StatusInternalServerError)
 		return
@@ -87,7 +87,7 @@ func (h *MarksHandler) UpdateMarksHandler(w http.ResponseWriter, r *http.Request
 		return
 	}
 	// Update the existing marks
-	result := h.marksService.UpdateMarks(studentID, &updatedMarks)
+	result := h.marksService.UpdateMarks(studentID, updatedMarks)
 	if result != nil {
 		http.Error(w, "result.Error.Error()", http.StatusInternalServerError)
 		return

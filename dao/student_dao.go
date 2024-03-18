@@ -6,7 +6,7 @@ import (
 )
 
 type StudentDAO interface {
-	Create(student *entity.Student) (uint, error)
+	Create(student *entity.Student) (int32, error)
 	GetByID(id string) (*entity.Student, error)
 	Update(id string, student *entity.Student) error
 	Delete(id string) error
@@ -23,7 +23,7 @@ func NewStudentDAO(database *db.Database) StudentDAO {
 }
 
 // Create creates a new student record in the database.
-func (d *StudentDAOImpl) Create(student *entity.Student) (uint, error) {
+func (d *StudentDAOImpl) Create(student *entity.Student) (int32, error) {
 	err := d.db.Create(student).Error
 	if err != nil {
 		return 0, err

@@ -1,0 +1,61 @@
+syntax = "proto3";
+option go_package = "./";
+package api;
+
+// Message definition for marks.
+message Marks {
+    string student_id = 1;
+    int32 sub_1 = 2;
+    int32 sub_2 = 3;
+    int32 sub_3 = 4;
+    // Add other fields as needed
+}
+
+// Message definition for a request to create marks.
+message CreateMarksRequest {
+    Marks marks = 1;
+}
+
+// Message definition for a response to create marks.
+message CreateMarksResponse {
+    string result = 1;
+}
+
+// Message definition for a request to retrieve marks by student ID.
+message GetMarksRequest {
+    string student_id = 1;
+}
+
+// Message definition for a response to retrieve marks by student ID.
+message GetMarksResponse {
+    Marks marks = 1;
+}
+
+// Message definition for a request to update marks.
+message UpdateMarksRequest {
+    string student_id = 1;
+    Marks marks = 2;
+}
+
+// Message definition for a response to update marks.
+message UpdateMarksResponse {
+    string message = 1;
+}
+
+// Message definition for a request to delete marks by student ID.
+message DeleteMarksRequest {
+    string student_id = 1;
+}
+
+// Message definition for a response to delete marks by student ID.
+message DeleteMarksResponse {
+    string message = 1;
+}
+
+// Service definition for CRUD operations on the marks table.
+service MarksService {
+    rpc CreateMarksRPC(CreateMarksRequest) returns (CreateMarksResponse);
+    rpc GetMarksRPC(GetMarksRequest) returns (GetMarksResponse);
+    rpc UpdateMarksRPC(UpdateMarksRequest) returns (UpdateMarksResponse);
+    rpc DeleteMarksRPC(DeleteMarksRequest) returns (DeleteMarksResponse);
+}
