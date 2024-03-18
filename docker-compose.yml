@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    #build:
+      #context: ./postgres
+    container_name: newpg-container
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    
+    environment:
+      POSTGRES_USER: hp
+      POSTGRES_PASSWORD: Harshith
+      POSTGRES_DB: prithvi
+
+  go-app:
+    build: .
+    container_name: stu-app-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    

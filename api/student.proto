@@ -1,0 +1,77 @@
+syntax = "proto3";
+option go_package = "./";
+package api;
+
+
+
+// Message definition for a request to create a student.
+message StudentRequest {
+    // Note: Exclude the 'id' field from the request
+    string first_name = 1;
+    string last_name = 2;
+    string grade = 3;
+    string phno = 4;
+    string email_id = 5;
+    string address = 6;
+}
+
+// Message definition for a student.
+message StudentResponse {
+    int32 id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string grade = 4;
+    string phno = 5;
+    string email_id = 6;
+    string address = 7;
+    // Add other fields as needed
+}
+
+// Message definition for a request to create a student.
+message CreateStudentRequest {
+    StudentRequest student = 1;
+}
+
+// Message definition for a response to create a student.
+message CreateStudentResponse {
+    string message = 1;
+}
+
+// Message definition for a request to retrieve a student by ID.
+message GetStudentRequest {
+    string id = 1;
+}
+
+// Message definition for a response to retrieve a student by ID.
+message GetStudentResponse {
+    StudentResponse student = 1;
+}
+
+// Message definition for a request to update a student.
+message UpdateStudentRequest {
+    string id = 1;
+    StudentRequest student = 2;
+}
+
+// Message definition for a response to update a student.
+message UpdateStudentResponse {
+    string message = 1;
+}
+
+// Message definition for a request to delete a student by ID.
+message DeleteStudentRequest {
+    string id = 1;
+}
+
+// Message definition for a response to delete a student by ID.
+message DeleteStudentResponse {
+    string message = 1;
+}
+
+// Service definition for CRUD operations on the student table.
+service StudentService {
+    rpc CreateStudentRPC(CreateStudentRequest) returns (CreateStudentResponse);
+    rpc GetStudentRPC(GetStudentRequest) returns (GetStudentResponse);
+    rpc UpdateStudentRPC(UpdateStudentRequest) returns (UpdateStudentResponse);
+    rpc DeleteStudentRPC(DeleteStudentRequest) returns (DeleteStudentResponse);
+}
